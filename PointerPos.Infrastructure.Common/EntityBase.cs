@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PointerPOS.Infrastructure.Domain
+namespace PointerPOS.Infrastructure.Common
 {
     /// <summary>
     /// Base class for all of entities in a domain model
@@ -64,7 +64,7 @@ namespace PointerPOS.Infrastructure.Domain
         }
 
         /// <summary>
-        /// External code will collect broken rules calling this method
+        /// Implementing entities will collect broken rules calling this method
         /// </summary>
         /// <returns>A list of broken business rules.</returns>
         public IEnumerable<BusinessRule> GetBrokenRules()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PointerPOS.Infrastructure.Domain
+namespace PointerPOS.Infrastructure.Common
 {
     public class ValueObjectIsInvalidException : Exception
     {

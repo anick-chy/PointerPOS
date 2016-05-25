@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PointerPOS.Infrastructure.Domain
+namespace PointerPOS.Infrastructure.Common
 {
+    /// <summary>
+    /// Value objects will inherit this class
+    /// </summary>
     public abstract class ValueObjectBase
     {
         private List<BusinessRule> _brokenRules = new List<BusinessRule>();
