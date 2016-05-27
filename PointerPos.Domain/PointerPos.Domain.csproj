@@ -39,7 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Inventory\Enumerations.cs" />
     <Compile Include="Inventory\Product.cs" />
+    <Compile Include="Inventory\ProductMeasurement.cs" />
+    <Compile Include="Inventory\ProductProperties.cs" />
     <Compile Include="Inventory\ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

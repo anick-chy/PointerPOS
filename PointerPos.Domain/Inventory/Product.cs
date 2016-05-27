@@ -8,25 +8,47 @@ namespace PointerPos.Domain.Inventory
 {
     public class Product : EntityBase<int>
     {
-        public string ProductName { get; set; }
-        public int CategoryID { get; set; }
-        public int BrandID { get; set; }
-        public string SalesUnit { get; set; }
-        public string Model { get; set; }
-        public double SizeOrCapacity { get; set; }
-        public string SizeOrCapacityUnit { get; set; }
-        public double Power { get; set; }
-        public float Warranty { get; set; }
-        public string WarrantyUnit { get; set; }
-        public float WarrantyOfParts { get; set; }
-        public string WarrantyOfPartsUnit { get; set; }
-        public float ServiceDuration { get; set; }
-        public string ServiceDurationUnit { get; set; }
-        public float ReorderAmount { get; set; }
-        public string Color { get; set; }
-        public string ManufacturedIn { get; set; }
-        public string Features { get; set; }
-        public string Status { get; set; }
+        public string ProductName { get; private set; }
+        public int CategoryID { get; private set; }
+        public int BrandID { get; private set; }
+        public float ReorderPoint { get; private set; }
+        public ProductService ProductService { get; private set; }
+        public ProductMeasurement ProductMeasurement { get; private set; }
+        public ProductProperties ProductProperties { get; private set; }
+        public string Status { get; private set; }
+
+        public Product(string productName, int categoryId)
+        {
+            ProductName = productName;
+            CategoryID = categoryId;
+        }
+
+        public void AssignBrand(int brandId)
+        {
+            BrandID = brandId;
+        }
+
+        public void AssignProductService(float warranty, ServicePeriod warrantyUnit,
+            float warrantyOfParts, ServicePeriod warrantyOfPartsUnit,
+            float serviceDuration, ServicePeriod serviceDurationUnit)
+        {
+            ProductService = new ProductService(warranty, warrantyUnit, warrantyOfParts, warrantyOfPartsUnit, serviceDuration, serviceDurationUnit);
+        }
+
+        public void AssignProductMeasurement(double sizeOrCapacity, string sizeOrCapacityUnit, double power, string salesUnit)
+        {
+            ProductMeasurement = new ProductMeasurement(sizeOrCapacity, sizeOrCapacityUnit, power, salesUnit);
+        }
+
+        public void AssignProductProperties(string model, string color, string manufacturedIn, string features)
+        {
+            ProductProperties = new ProductProperties(model, color, manufacturedIn, features);
+        }
+
+        public void SetReorderPoint(float reorderPoint)
+        {
+            ReorderPoint = reorderPoint;
+        }
 
         protected override void Validate()
         {
