@@ -40,10 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Inventory\Enumerations.cs" />
-    <Compile Include="Inventory\Product.cs" />
-    <Compile Include="Inventory\ProductMeasurement.cs" />
-    <Compile Include="Inventory\ProductProperties.cs" />
-    <Compile Include="Inventory\ProductService.cs" />
+    <Compile Include="Inventory\Product\Product.cs" />
+    <Compile Include="Inventory\Product\ProductMeasurement.cs" />
+    <Compile Include="Inventory\Product\ProductProperties.cs" />
+    <Compile Include="Inventory\Product\ProductService.cs" />
+    <Compile Include="Inventory\Stock\IPlaceOfStock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
