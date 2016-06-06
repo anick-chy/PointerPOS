@@ -9,7 +9,7 @@ namespace PointerPos.Domain.Inventory.InventoryRepository
     interface IStockRepository
     {
         float GetProductsQuantityInStock(int productId);
-        void AddProductToStock(int placeOfStockId, int productId, float quantity);
-        void DeductProductFromStock(int placeOfStockId, int productId, float quantity);
+        void AddProductToStock(int placeOfStockId, int productId, float quantity, DateTime operationDate);
+        void DeductProductFromStock(int placeOfStockId, int productId, float quantity, DateTime operationDate);
     }
 }

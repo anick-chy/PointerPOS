@@ -6,14 +6,14 @@ using System.Text;
 
 namespace PointerPos.Domain.Inventory.Stock
 {
-    public class StoreStock : IPlaceOfStock
+    public class WarehouseStock : IPlaceOfStock
     {
-        private int _storeId;
+        private int _warehouseId;
         private IStockRepository _stockRepository;
-        public StoreStock(int storeId)
+        public WarehouseStock(int warehouseId)
         {
-            _storeId = storeId;
-            _stockRepository = new StoreRepository();
+            _warehouseId = warehouseId;
+            _stockRepository = new WarehouseRepository();
         }
         public float ProductsInStock(int productId)
         {
@@ -22,12 +22,12 @@ namespace PointerPos.Domain.Inventory.Stock
 
         public void AddProductToStock(int productId, float quantity, DateTime operationDate)
         {
-            _stockRepository.AddProductToStock(this._storeId, productId, quantity, operationDate);
+            _stockRepository.AddProductToStock(this._warehouseId, productId, quantity, operationDate);
         }
 
         public void DeductProductFromStock(int productId, float quantity, DateTime operationDate)
         {
-            _stockRepository.DeductProductFromStock(this._storeId, productId, quantity, operationDate);
+            _stockRepository.DeductProductFromStock(this._warehouseId, productId, quantity, operationDate);
         }
     }
 }

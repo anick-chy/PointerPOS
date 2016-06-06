@@ -42,12 +42,14 @@
     <Compile Include="Inventory\Enumerations.cs" />
     <Compile Include="Inventory\InventoryRepository\IStockRepository.cs" />
     <Compile Include="Inventory\InventoryRepository\StoreRepository.cs" />
+    <Compile Include="Inventory\InventoryRepository\WarehouseRepository.cs" />
     <Compile Include="Inventory\Product\Product.cs" />
     <Compile Include="Inventory\Product\ProductMeasurement.cs" />
     <Compile Include="Inventory\Product\ProductProperties.cs" />
     <Compile Include="Inventory\Product\ProductService.cs" />
     <Compile Include="Inventory\Stock\IPlaceOfStock.cs" />
     <Compile Include="Inventory\Stock\StoreStock.cs" />
+    <Compile Include="Inventory\Stock\WarehouseStock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
