@@ -39,18 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Inventory\Enumerations.cs" />
-    <Compile Include="Inventory\InventoryRepository\IStockRepository.cs" />
-    <Compile Include="Inventory\InventoryRepository\StoreRepository.cs" />
-    <Compile Include="Inventory\InventoryRepository\WarehouseRepository.cs" />
-    <Compile Include="Inventory\Product\Product.cs" />
-    <Compile Include="Inventory\Product\ProductMeasurement.cs" />
-    <Compile Include="Inventory\Product\ProductProperties.cs" />
-    <Compile Include="Inventory\Product\ProductService.cs" />
-    <Compile Include="Inventory\Stock\IPlaceOfStock.cs" />
-    <Compile Include="Inventory\Stock\StoreStock.cs" />
-    <Compile Include="Inventory\Stock\WarehouseStock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchaseAggregate\Model\Item.cs" />
+    <Compile Include="PurchaseAggregate\Model\Purchase.cs" />
+    <Compile Include="PurchaseAggregate\Model\Purchase_2.cs" />
+    <Compile Include="PurchaseAggregate\Repositories\IItemRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PointerPos.Infrastructure.Common\PointerPos.Infrastructure.Common.csproj">
@@ -58,7 +51,9 @@
       <Name>PointerPos.Infrastructure.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="PurchaseAggregate\Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
