@@ -40,10 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchaseAggregate\Model\IPurchase.cs" />
     <Compile Include="PurchaseAggregate\Model\Item.cs" />
     <Compile Include="PurchaseAggregate\Model\Purchase.cs" />
     <Compile Include="PurchaseAggregate\Model\Purchase_2.cs" />
-    <Compile Include="PurchaseAggregate\Repositories\IItemRepository.cs" />
+    <Compile Include="PurchaseAggregate\Repositories\IPurchaseRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PointerPos.Infrastructure.Common\PointerPos.Infrastructure.Common.csproj">

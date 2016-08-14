@@ -12,16 +12,16 @@ namespace PointerPos.Domain.PurchaseAggregate.Model
         public decimal UnitCost { get; private set; }
         public int Quantity { get; private set; }
         private int itemID;
-        private readonly IItemRepository _itemRepository;
+        private readonly IPurchaseRepository _purchaseRepository;
         public Purchase PurchaseBelong { get; private set; }
         
-        public Item(Purchase purchase, int itemId, decimal unitCost, int quantity, IItemRepository itemRepository)
+        public Item(Purchase purchase, int itemId, decimal unitCost, int quantity, IPurchaseRepository purchaseRepository)
         {
             PurchaseBelong = purchase;
             itemID = itemId;
             UnitCost = unitCost;
             Quantity = quantity;
-            _itemRepository = itemRepository;
+            _purchaseRepository = purchaseRepository;
         }
 
         protected override void Validate()
