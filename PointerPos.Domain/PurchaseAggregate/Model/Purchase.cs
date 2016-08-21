@@ -1,4 +1,5 @@
-﻿using PointerPos.Domain.PurchaseAggregate.Repositories;
+﻿using PointerPos.Domain.PurchaseAggregate.Enumerations;
+using PointerPos.Domain.PurchaseAggregate.Repositories;
 using PointerPOS.Infrastructure.Common;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,13 @@ namespace PointerPos.Domain.PurchaseAggregate.Model
     {
         private IPurchaseRepository _purchaseRepository;
 
-        public Purchase(IPurchaseRepository purchaseRepository)
+        private readonly IList<Item> _lineItems = new List<Item>();
+        public IEnumerable<Item> LineItems
+        {
+            get { return _lineItems; }
+        }
+
+        public Purchase(DateTime purchaseDate, int supplierId, IPurchaseRepository purchaseRepository)
         {
             _purchaseRepository = purchaseRepository;
         }
@@ -23,8 +30,28 @@ namespace PointerPos.Domain.PurchaseAggregate.Model
 
         public Item AssignItem(int itemId, int quantity, decimal unitCost)
         {
-            throw new NotImplementedException();
+            Item item = new Item(this, itemId, unitCost, quantity, _purchaseRepository);
+            _lineItems.Add(item);
+            return item;
         }
 
+        public Item AssignItem(int itemId, int quantity, decimal unitCost, decimal discountAmount, DiscountUnit discountUnit)
+        {
+            Item item = this.AssignItem(itemId, quantity, unitCost);
+            item.AddDiscount(discountAmount, discountUnit);
+
+            return item;
+        }
+
+        public decimal GetNetTotal()
+        {
+            decimal netTotal = 0;
+            foreach (Item item in _lineItems)
+            {
+                netTotal += item.GetItemSubtotalWithDiscount();
+            }
+
+            return netTotal;
+        }
     }
 }

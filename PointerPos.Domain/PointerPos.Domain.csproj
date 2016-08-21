@@ -40,11 +40,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchaseAggregate\Enumerations\DiscountUnit.cs" />
     <Compile Include="PurchaseAggregate\Model\IPurchase.cs" />
     <Compile Include="PurchaseAggregate\Model\Item.cs" />
     <Compile Include="PurchaseAggregate\Model\Purchase.cs" />
-    <Compile Include="PurchaseAggregate\Model\Purchase_2.cs" />
     <Compile Include="PurchaseAggregate\Repositories\IPurchaseRepository.cs" />
+    <Compile Include="PurchaseAggregate\Services\DiscountPerItemOnTotalQuantity.cs" />
+    <Compile Include="PurchaseAggregate\Services\DiscountPerItemOnUnitQuantity.cs" />
+    <Compile Include="PurchaseAggregate\Services\IDiscountPerItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PointerPos.Infrastructure.Common\PointerPos.Infrastructure.Common.csproj">
@@ -52,9 +55,7 @@
       <Name>PointerPos.Infrastructure.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="PurchaseAggregate\Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
