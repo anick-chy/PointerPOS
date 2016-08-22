@@ -13,10 +13,16 @@ namespace PointerPos.Domain.PurchaseAggregate.Model
         private IPurchaseRepository _purchaseRepository;
 
         private readonly IList<Item> _lineItems = new List<Item>();
+        private decimal _grossTotal = 0;
+        private decimal _subTotal = 0;
+
         public IEnumerable<Item> LineItems
         {
             get { return _lineItems; }
         }
+
+        public decimal GrossTotal { get { return _grossTotal; } }
+        public decimal SubTotal { get { return _subTotal; } }
 
         public Purchase(DateTime purchaseDate, int supplierId, IPurchaseRepository purchaseRepository)
         {
@@ -30,28 +36,23 @@ namespace PointerPos.Domain.PurchaseAggregate.Model
 
         public Item AssignItem(int itemId, int quantity, decimal unitCost)
         {
-            Item item = new Item(this, itemId, unitCost, quantity, _purchaseRepository);
+            Item item = new Item(this, itemId, unitCost, quantity);
             _lineItems.Add(item);
+
+            _subTotal += item.ItemSubtotal;
+            _grossTotal += item.ItemSubtotal;
             return item;
         }
 
         public Item AssignItem(int itemId, int quantity, decimal unitCost, decimal discountAmount, DiscountUnit discountUnit)
         {
-            Item item = this.AssignItem(itemId, quantity, unitCost);
+            Item item = AssignItem(itemId, quantity, unitCost);
             item.AddDiscount(discountAmount, discountUnit);
 
+            _subTotal -= item.ItemDiscount;
+            _grossTotal -= item.ItemDiscount;
             return item;
         }
-
-        public decimal GetNetTotal()
-        {
-            decimal netTotal = 0;
-            foreach (Item item in _lineItems)
-            {
-                netTotal += item.GetItemSubtotalWithDiscount();
-            }
-
-            return netTotal;
-        }
+        
     }
 }

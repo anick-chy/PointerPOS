@@ -10,21 +10,23 @@ namespace PointerPos.Domain.PurchaseAggregate.Model
 {
     public class Item : EntityBase<int>
     {
+        private readonly decimal _subTotal = 0;
+        private decimal _discount = 0;
         public decimal UnitCost { get; private set; }
         public int Quantity { get; private set; }
-        private readonly IPurchaseRepository _purchaseRepository;
         public Purchase PurchaseBelong { get; private set; }
         public DiscountUnit DiscountUnit { get; private set; }
         public decimal DiscountAmount { get; private set; }
 
         
-        public Item(Purchase purchase, int itemId, decimal unitCost, int quantity, IPurchaseRepository purchaseRepository)
+        public Item(Purchase purchase, int itemId, decimal unitCost, int quantity)
         {
             PurchaseBelong = purchase;
             Id = itemId;
             UnitCost = unitCost;
             Quantity = quantity;
-            _purchaseRepository = purchaseRepository;
+
+            _subTotal = unitCost * quantity;
         }
 
         protected override void Validate()
@@ -36,19 +38,21 @@ namespace PointerPos.Domain.PurchaseAggregate.Model
         {
             DiscountAmount = discountAmount;
             DiscountUnit = discountUnit;
+
+            _discount = discountUnit.GetMoneyValueOfDiscount(_subTotal, discountAmount);
         }
 
-        public decimal GetItemSubtotalWithoutDiscount()
+        public decimal ItemSubtotal
         {
-            return UnitCost * Quantity;
+            get { return _subTotal; }
         }
 
-        public decimal GetItemSubtotalWithDiscount()
+        public decimal ItemDiscount
         {
-            decimal subtotal = GetItemSubtotalWithoutDiscount();
-            subtotal -= DiscountUnit.GetMoneyValueOfDiscount(subtotal, DiscountAmount);
-
-            return subtotal;
+            get
+            {
+                return _discount;
+            }
         }
     }
 }
