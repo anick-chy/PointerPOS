@@ -43,35 +43,5 @@ namespace PointerPOS.Infrastructure.Common
         {
             return (!(entity1 == entity2));
         }
-
-        /// <summary>
-        /// Abstract method to be implemented to validate business rules of the domain
-        /// </summary>
-        protected abstract void Validate();
-
-        /// <summary>
-        /// Storage of the broken business rules
-        /// </summary>
-        private List<BusinessRule> _brokenRules = new List<BusinessRule>();
-
-        /// <summary>
-        /// Implementing entities will add broken rules through this method.
-        /// </summary>
-        /// <param name="businessRule">The business rules of the entity</param>
-        protected void AddBrokenRule(BusinessRule businessRule)
-        {
-            _brokenRules.Add(businessRule);
-        }
-
-        /// <summary>
-        /// Implementing entities will collect broken rules calling this method
-        /// </summary>
-        /// <returns>A list of broken business rules.</returns>
-        public IEnumerable<BusinessRule> GetBrokenRules()
-        {
-            _brokenRules.Clear();
-            Validate();
-            return _brokenRules;
-        }
     }
 }

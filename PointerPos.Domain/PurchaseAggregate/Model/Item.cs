@@ -29,11 +29,6 @@ namespace PointerPos.Domain.PurchaseAggregate.Model
             _subTotal = unitCost * quantity;
         }
 
-        protected override void Validate()
-        {
-            throw new NotImplementedException();
-        }
-
         public void AddDiscount(decimal discountAmount, DiscountUnit discountUnit)
         {
             DiscountAmount = discountAmount;

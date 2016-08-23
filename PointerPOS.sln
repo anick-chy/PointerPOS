@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointerPos.Infrastructure.Common", "PointerPos.Infrastructure.Common\PointerPos.Infrastructure.Common.csproj", "{B91EE783-D683-41AE-85B3-2480D397CC86}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointerPos.Domain", "PointerPos.Domain\PointerPos.Domain.csproj", "{2032134A-4417-4559-BE91-C6605C1B96B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainUnitTest", "DomainUnitTest\DomainUnitTest.csproj", "{D4CB7768-3283-4EFF-B54D-172C202802EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +23,10 @@ Global
 		{2032134A-4417-4559-BE91-C6605C1B96B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2032134A-4417-4559-BE91-C6605C1B96B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2032134A-4417-4559-BE91-C6605C1B96B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4CB7768-3283-4EFF-B54D-172C202802EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4CB7768-3283-4EFF-B54D-172C202802EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4CB7768-3283-4EFF-B54D-172C202802EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4CB7768-3283-4EFF-B54D-172C202802EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

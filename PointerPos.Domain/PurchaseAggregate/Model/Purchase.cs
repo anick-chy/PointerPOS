@@ -13,25 +13,22 @@ namespace PointerPos.Domain.PurchaseAggregate.Model
         private IPurchaseRepository _purchaseRepository;
 
         private readonly IList<Item> _lineItems = new List<Item>();
-        private decimal _grossTotal = 0;
         private decimal _subTotal = 0;
+        private decimal _discountAmount = 0;
+        private DiscountUnit _discountUnit;
+        private decimal _discountInMoney;
 
         public IEnumerable<Item> LineItems
         {
             get { return _lineItems; }
         }
 
-        public decimal GrossTotal { get { return _grossTotal; } }
+        public decimal GrossTotal { get { return _subTotal - _discountInMoney; } }
         public decimal SubTotal { get { return _subTotal; } }
 
         public Purchase(DateTime purchaseDate, int supplierId, IPurchaseRepository purchaseRepository)
         {
             _purchaseRepository = purchaseRepository;
-        }
-
-        protected override void Validate()
-        {
-            throw new NotImplementedException();
         }
 
         public Item AssignItem(int itemId, int quantity, decimal unitCost)
@@ -40,7 +37,6 @@ namespace PointerPos.Domain.PurchaseAggregate.Model
             _lineItems.Add(item);
 
             _subTotal += item.ItemSubtotal;
-            _grossTotal += item.ItemSubtotal;
             return item;
         }
 
@@ -50,9 +46,21 @@ namespace PointerPos.Domain.PurchaseAggregate.Model
             item.AddDiscount(discountAmount, discountUnit);
 
             _subTotal -= item.ItemDiscount;
-            _grossTotal -= item.ItemDiscount;
             return item;
         }
-        
+
+        public void AddDiscount(decimal discountAmount, DiscountUnit discountUnit)
+        {
+            _discountAmount = discountAmount;
+            _discountUnit = discountUnit;
+
+            _discountInMoney = _discountUnit.GetMoneyValueOfDiscount(_subTotal, _discountAmount);
+        }
+
+        public decimal Discount
+        {
+            get { return _discountInMoney; }
+        }
+
     }
 }
