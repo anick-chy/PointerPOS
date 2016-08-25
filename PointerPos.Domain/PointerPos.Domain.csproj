@@ -51,6 +51,7 @@
     <Compile Include="PurchaseAggregate\Services\DiscountPerItemOnTotalQuantity.cs" />
     <Compile Include="PurchaseAggregate\Services\DiscountPerItemOnUnitQuantity.cs" />
     <Compile Include="PurchaseAggregate\Services\IDiscountPerItem.cs" />
+    <Compile Include="PurchaseAggregate\Validation\PurchaseValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PointerPos.Infrastructure.Common\PointerPos.Infrastructure.Common.csproj">
@@ -61,6 +62,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
